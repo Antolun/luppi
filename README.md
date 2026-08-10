@@ -1,6 +1,6 @@
 # PiSiPi — PiSi Package Installer
 
-**PiSiPi** is a lightweight, modern Qt/QML-based Graphical User Interface (GUI) wrapper for the **PiSi package manager** (used in Solus, Pardus, and Linux390 derivatives). 
+**PiSiPi** is a lightweight, modern Qt/QML-based Graphical User Interface (GUI) wrapper for the **PiSi package manager**. 
 
 It simplifies `.pisi` package installations by offering an intuitive interface with real-time log output, administrative privilege delegation, command-line argument handling, and desktop file-association integration.
 
@@ -29,7 +29,7 @@ To build and run PiSiPi from source, ensure you have the following dependencies 
 ## 🚀 Building & Installing
 ```bash
 # 1. Clone the Repository
-git clone [https://github.com/TeknoAnka/pisipi.git](https://github.com/TeknoAnka/pisipi.git)
+git clone https://github.com/TeknoAnka/pisipi.git
 cd pisipi
 
 # 2. Start Build
