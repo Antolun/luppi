@@ -1,0 +1,9 @@
+[package]
+name = "pisipi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+qmetaobject = "0.2"
+cpp = "0.5"
+sys-locale = "0.3"

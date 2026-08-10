@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PISI SYSTEM "https://www.pisilinux.org/projeler/pisi/pisi-spec.dtd">
+<PISI>
+    <Source>
+        <Name>pisipi</Name>
+        <Homepage>https://github.com/TeknoAnka/pisipi</Homepage>
+        <Packager>
+            <Name>Solzic0</Name>
+            <Email>solzic0@yandex.com</Email>
+        </Packager>
+        <License>GPLv3</License>
+        <IsA>app:gui</IsA>
+        <Summary>PiSi Package Installer</Summary>
+        <Description>PiSiPi is package installer built with Rust.</Description>
+    </Source>
+
+    <Package>
+        <Name>pisipi</Name>
+        <Files>
+            <Path fileType="executable">/usr/bin/pisipi</Path>
+            <Path fileType="data">/usr/share/applications/pisipi.desktop</Path>
+            <Path fileType="data">/usr/share/icons/hicolor/128x128/apps/pisipi.png</Path>
+            <Path fileType="doc">/usr/share/doc/pisipi</Path>
+        </Files>
+    </Package>
+
+    <History>
+        <Update release="1">
+            <Date>2026-08-10</Date>
+            <Version>2.0.0</Version>
+            <Comment>Rust release</Comment>
+            <Name>Solzic0</Name>
+            <Email>solzic0@yandex.com</Email>
+        </Update>
+    </History>
+</PISI>

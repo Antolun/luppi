@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PiSiPi
+Name[tr]=PiSiPi
+GenericName=PiSi Package Installer
+GenericName[tr]=PiSi Paket Kurucusu
+Comment=Open and Install PiSi Packages
+Comment[tr]=PiSi Paketlerini Aç ve Kur
+Exec=pisipi
+Icon=pisipi
+Terminal=false
+Categories=Utility;LupuS;System;
+Keywords=weather;forecast;pisipi;
+MimeType=application/x-pisi;application/x-pisi-package;application/pisi;
+StartupNotify=true
+StartupWMClass=pisipi
