@@ -1,7 +1,7 @@
 PisiPackage {
     Source {
         Name "aerosky"
-        Homepage "https://github.com/TeknoAnka/pisipi"
+        Homepage "https://github.com/Antolun/pisipi"
         Summary "PiSi Package Installer"
         License "GPL-3.0-or-later"
         PartOf "desktop.utility"
