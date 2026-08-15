@@ -2,11 +2,11 @@
 set -euo pipefail
 
 echo "=========================================="
-echo " Luppi — Luppo Package Builder"
+echo " Luppo Package Installer — Luppo Package Builder"
 echo "=========================================="
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-export LUPPI_SRC_DIR="${SCRIPT_DIR}"
+export LUPPO_PACKAGE_INSTALLER_SRC_DIR="${SCRIPT_DIR}"
 cd "${SCRIPT_DIR}"
 
 echo "[1/2] Building Rust release binary..."
@@ -22,12 +22,12 @@ fi
 
 echo "Locating generated .luppo package..."
 
-LUPPI_FILE=$(find . /var/luppo /tmp -name "luppi-*.luppo" 2>/dev/null | head -n 1 || true)
+LUPPO_FILE=$(find . /var/luppo /tmp -name "luppo-package-installer-*.luppo" 2>/dev/null | head -n 1 || true)
 
-if [ -n "${LUPPI_FILE}" ] && [ -f "${LUPPI_FILE}" ]; then
-    TARGET_PATH="${SCRIPT_DIR}/$(basename "${LUPPI_FILE}")"
-    if [ "${LUPPI_FILE}" != "${TARGET_PATH}" ]; then
-        cp -f "${LUPPI_FILE}" "${TARGET_PATH}"
+if [ -n "${LUPPO_FILE}" ] && [ -f "${LUPPO_FILE}" ]; then
+    TARGET_PATH="${SCRIPT_DIR}/$(basename "${LUPPO_FILE}")"
+    if [ "${LUPPO_FILE}" != "${TARGET_PATH}" ]; then
+        cp -f "${LUPPO_FILE}" "${TARGET_PATH}"
     fi
     
     if [ -n "${SUDO_USER:-}" ]; then

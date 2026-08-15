@@ -24,7 +24,7 @@ struct Translations {
 fn get_translations(lang: &str) -> Translations {
     match lang {
         "tr" => Translations {
-            title: "Luppi",
+            title: "Luppo Paket Kurucusu",
             select_prompt: "Lütfen kurulacak bir <b>.luppo</b> dosyası seçin.",
             btn_select: "Paket Seç...",
             btn_install: "Paketi Kur",
@@ -39,7 +39,7 @@ fn get_translations(lang: &str) -> Translations {
             process_start_err: "\nSüreç başlatılamadı: {}\n",
         },
         _ => Translations {
-            title: "Luppi",
+            title: "Luppo Package Installer",
             select_prompt: "Please select a <b>.luppo</b> package to install.",
             btn_select: "Select Package...",
             btn_install: "Install Package",
@@ -66,7 +66,7 @@ fn detect_language() -> String {
 }
 
 #[derive(QObject, Default)]
-struct Luppi {
+struct LuppoPackageInstaller {
     base: qt_base_class!(trait QObject),
 
     status_text: qt_property!(QString; NOTIFY status_text_changed),
@@ -84,7 +84,7 @@ struct Luppi {
     start_install: qt_method!(fn(&mut self)),
 }
 
-impl Luppi {
+impl LuppoPackageInstaller {
     fn load_file(&mut self, path_str: String) {
         let clean_path = path_str.trim_start_matches("file://").to_string();
         let path = Path::new(&clean_path);
@@ -211,11 +211,11 @@ impl Luppi {
 }
 
 fn main() {
-    qml_register_type::<Luppi>(
-        c"Luppi",
+    qml_register_type::<LuppoPackageInstaller>(
+        c"LuppoPackageInstaller",
         1,
         0,
-        c"Luppi",
+        c"LuppoPackageInstaller",
     );
 
     let args: Vec<String> = env::args().collect();
@@ -245,7 +245,7 @@ fn main() {
     import QtQuick.Controls
     import QtQuick.Layouts
     import QtQuick.Dialogs
-    import Luppi 1.0
+    import LuppoPackageInstaller 1.0
 
     ApplicationWindow {
         id: window
@@ -254,7 +254,7 @@ fn main() {
         width: 600
         height: 450
 
-        Luppi {
+        LuppoPackageInstaller {
             id: installer
         }
 

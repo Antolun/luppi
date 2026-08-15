@@ -9,13 +9,13 @@ def build():
     pass
 
 def install():
-    src_dir = os.environ.get("LUPPI_SRC_DIR", os.getcwd())
+    src_dir = os.environ.get("LUPPO_PACKAGE_INSTALLER_SRC_DIR", os.getcwd())
 
     possible_bins = [
-        os.path.join(src_dir, "target/release/luppi"),
-        os.path.join(src_dir, "luppi"),
-        "target/release/luppi",
-        "luppi",
+        os.path.join(src_dir, "target/release/luppo-package-installer"),
+        os.path.join(src_dir, "luppo-package-installer"),
+        "target/release/luppo-package-installer",
+        "luppo-package-installer",
     ]
 
     bin_path = None
@@ -25,21 +25,21 @@ def install():
             break
 
     if not bin_path:
-        raise RuntimeError(f"luppi binary not found in any path! Searched: {possible_bins}")
+        raise RuntimeError(f"luppo-package-installer binary not found in any path! Searched: {possible_bins}")
 
     luppotools.dobin(bin_path)
 
-    desktop_path = os.path.join(src_dir, "luppi.desktop")
+    desktop_path = os.path.join(src_dir, "luppo-package-installer.desktop")
     if not os.path.isfile(desktop_path):
-        desktop_path = "luppi.desktop"
+        desktop_path = "luppo-package-installer.desktop"
     if os.path.isfile(desktop_path):
         luppotools.insinto("/usr/share/applications", desktop_path)
 
-    logo_path = os.path.join(src_dir, "luppi.png")
+    logo_path = os.path.join(src_dir, "luppo-package-installer.png")
     if not os.path.isfile(logo_path):
-        logo_path = "luppi.png"
+        logo_path = "luppo-package-installer.png"
     if os.path.isfile(logo_path):
-        luppotools.insinto("/usr/share/icons/hicolor/128x128/apps", logo_path, "luppi.png")
+        luppotools.insinto("/usr/share/icons/hicolor/128x128/apps", logo_path, "luppo-package-installer.png")
 
     readme_path = os.path.join(src_dir, "README.md")
     if not os.path.isfile(readme_path):

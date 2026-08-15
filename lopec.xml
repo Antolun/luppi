@@ -1,7 +1,7 @@
 <LUPPO>
     <Source>
-        <Name>luppi</Name>
-        <Homepage>https://github.com/Antolun/luppi</Homepage>
+        <Name>luppo-package-installer</Name>
+        <Homepage>https://github.com/Antolun/luppo-package-installer</Homepage>
         <Packager>
             <Name>Solzic0</Name>
             <Email>solzic0@yandex.com</Email>
@@ -9,16 +9,16 @@
         <License>GPLv3</License>
         <IsA>app:gui</IsA>
         <Summary>Luppo Package Installer</Summary>
-        <Description>Luppi is package installer built with Rust.</Description>
+        <Description>Luppo Package Installer is package installer built with Rust.</Description>
     </Source>
 
     <Package>
-        <Name>luppi</Name>
+        <Name>luppo-package-installer</Name>
         <Files>
-            <Path fileType="executable">/usr/bin/luppi</Path>
-            <Path fileType="data">/usr/share/applications/luppi.desktop</Path>
-            <Path fileType="data">/usr/share/icons/hicolor/128x128/apps/luppi.png</Path>
-            <Path fileType="doc">/usr/share/doc/luppi</Path>
+            <Path fileType="executable">/usr/bin/luppo-package-installer</Path>
+            <Path fileType="data">/usr/share/applications/luppo-package-installer.desktop</Path>
+            <Path fileType="data">/usr/share/icons/hicolor/128x128/apps/luppo-package-installer.png</Path>
+            <Path fileType="doc">/usr/share/doc/luppo-package-installer</Path>
         </Files>
     </Package>
 
