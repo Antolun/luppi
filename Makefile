@@ -9,7 +9,7 @@ run:
 	cargo run
 
 package: build
-	./build-pisi.sh
+	./build-luppo.sh
 
 clean:
 	cargo clean

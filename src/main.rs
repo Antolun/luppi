@@ -24,8 +24,8 @@ struct Translations {
 fn get_translations(lang: &str) -> Translations {
     match lang {
         "tr" => Translations {
-            title: "PiSiPi",
-            select_prompt: "Lütfen kurulacak bir <b>.pisi</b> dosyası seçin.",
+            title: "Luppi",
+            select_prompt: "Lütfen kurulacak bir <b>.luppo</b> dosyası seçin.",
             btn_select: "Paket Seç...",
             btn_install: "Paketi Kur",
             selected_pkg: "Seçilen Paket:",
@@ -34,13 +34,13 @@ fn get_translations(lang: &str) -> Translations {
             log_starting: "\nKurulum yetkisi isteniyor...",
             log_success: "\nPaket kurulumu başarıyla tamamlandı!",
             log_error: "\nKurulum başarısız oldu (Çıkış Kodu: {}).",
-            dialog_title: "PiSi Paketi Seç",
+            dialog_title: "Luppo Paketi Seç",
             pack_instld: "Yüklenen Paket: {}",
             process_start_err: "\nSüreç başlatılamadı: {}\n",
         },
         _ => Translations {
-            title: "PiSiPi",
-            select_prompt: "Please select a <b>.pisi</b> package to install.",
+            title: "Luppi",
+            select_prompt: "Please select a <b>.luppo</b> package to install.",
             btn_select: "Select Package...",
             btn_install: "Install Package",
             selected_pkg: "Selected Package:",
@@ -49,7 +49,7 @@ fn get_translations(lang: &str) -> Translations {
             log_starting: "\nRequesting administrator privileges...",
             log_success: "\nPackage installation completed successfully!",
             log_error: "\nInstallation failed (Exit code: {}).",
-            dialog_title: "Select PiSi Package",
+            dialog_title: "Select Luppo Package",
             pack_instld: "Installed Package: {}",
             process_start_err: "\nThe process could not be started: {}\n",
         },
@@ -66,7 +66,7 @@ fn detect_language() -> String {
 }
 
 #[derive(QObject, Default)]
-struct PisiInstaller {
+struct Luppi {
     base: qt_base_class!(trait QObject),
 
     status_text: qt_property!(QString; NOTIFY status_text_changed),
@@ -84,12 +84,12 @@ struct PisiInstaller {
     start_install: qt_method!(fn(&mut self)),
 }
 
-impl PisiInstaller {
+impl Luppi {
     fn load_file(&mut self, path_str: String) {
         let clean_path = path_str.trim_start_matches("file://").to_string();
         let path = Path::new(&clean_path);
 
-        if path.extension().map_or(false, |ext| ext == "pisi") {
+        if path.extension().map_or(false, |ext| ext == "luppo") {
             let lang = detect_language();
             let tr = get_translations(&lang);
             let file_name = path.file_name().unwrap_or_default().to_string_lossy();
@@ -181,7 +181,7 @@ impl PisiInstaller {
 
         thread::spawn(move || {
             let child = Command::new("pkexec")
-                .args(&["pisi", "it", "--yes-all", &target])
+                .args(&["luppo", "it", "--yes-all", &target])
                 .stdout(Stdio::piped())
                 .stderr(Stdio::piped())
                 .spawn();
@@ -211,11 +211,11 @@ impl PisiInstaller {
 }
 
 fn main() {
-    qml_register_type::<PisiInstaller>(
-        c"PisiInstaller",
+    qml_register_type::<Luppi>(
+        c"Luppi",
         1,
         0,
-        c"PisiInstaller",
+        c"Luppi",
     );
 
     let args: Vec<String> = env::args().collect();
@@ -245,7 +245,7 @@ fn main() {
     import QtQuick.Controls
     import QtQuick.Layouts
     import QtQuick.Dialogs
-    import PisiInstaller 1.0
+    import Luppi 1.0
 
     ApplicationWindow {
         id: window
@@ -254,7 +254,7 @@ fn main() {
         width: 600
         height: 450
 
-        PisiInstaller {
+        Luppi {
             id: installer
         }
 
@@ -267,7 +267,7 @@ fn main() {
         FileDialog {
             id: fileDialog
             title: tr_dialog_title
-            nameFilters: ["PiSi Packages (*.pisi)"]
+            nameFilters: ["Luppo Packages (*.luppo)"]
             onAccepted: {
                 installer.select_file(fileDialog.selectedFile)
             }
