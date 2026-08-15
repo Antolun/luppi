@@ -14,7 +14,7 @@ cargo build --release
 
 echo "[2/2] Creating Luppo package (.luppo)..."
 if command -v luppo &>/dev/null; then
-    luppo build pspec.xml --no-sandbox --ignore-dependency
+    luppo build lopec.xml --no-sandbox --ignore-dependency
 else
     echo "Error: luppo command not found!"
     exit 1
