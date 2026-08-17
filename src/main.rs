@@ -321,12 +321,12 @@ fn main() {
                 TextArea {
                     readOnly: true
                     text: installer.log_text
-                    color: "#00ff00"
+                    color: "#1c1d2a"
                     font.family: "monospace"
                     font.pixelSize: 12
                     background: Rectangle {
-                        color: "#1e1e1e"
-                        border.color: "#444444"
+                        color: "#151628"
+                        border.color: "#1c1d2a"
                         radius: 6
                     }
                 }
